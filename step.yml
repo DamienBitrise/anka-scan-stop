@@ -1,0 +1,21 @@
+title: "Anka Scan Stop"
+summary: "Anka Scan Stop"
+description: "Stop after installing any dependencies to generate the scan report"
+website: https://docs.veertu.com/runtime-mac-scan/
+source_code_url: https://github.com/DamienBitrise/anka-scan-stop
+support_url: https://github.com/DamienBitrise/anka-scan-stop/issues
+host_os_tags:
+  - osx-10.10
+  - ubuntu-16.04
+type_tags:
+  - utility
+  
+project_type_tags:
+  - android
+  - ios
+
+is_always_run: false
+is_skippable: false
+
+inputs: {}
+
