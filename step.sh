@@ -2,16 +2,15 @@
 
 set -e
 
-echo "Installing Anka Scan..."
+if [[ -z "${DEPLOY_ENV}" ]]; then
+  echo "Stopping Anka Scan and Generating Report..."
 
-FULL_FILE_NAME=$(echo $(curl -Ls -r 0-1 -o /dev/null -w %{url_effective} https://veertu.com/downloads/runtime-mac-scan) | cut -d/ -f5)
-PARTIAL_FILE_NAME=$(echo $FULL_FILE_NAME | awk -F'.zip' '{print $1}')
-curl -Ls https://veertu.com/downloads/runtime-mac-scan -o $FULL_FILE_NAME
-unzip $FULL_FILE_NAME
-rm -f $FULL_FILE_NAME
+  cd $PARTIAL_FILE_NAME
 
-cd $PARTIAL_FILE_NAME
+  ./runtime-mac-scan-cli stop
 
-./runtime-mac-scan-cli stop
-
-./runtime-mac-scan-cli report
+  ./runtime-mac-scan-cli report
+else
+  echo "Make sure to run Anka Scan Start before running Anka Scan Stop"
+  exit 1
+fi
